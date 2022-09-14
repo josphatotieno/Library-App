@@ -82,3 +82,17 @@ tbody tr:nth-child(odd){
     background-color: #828080;
 }
 
+.error-msg {
+    margin-bottom: 25px;
+    padding: 10px 0;
+    background-color: #fff;
+    color: #f00;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 4px;
+    display: none;
+}
+
+.read {
+    color: #f00;
+}
