@@ -54,17 +54,31 @@ input {
     padding: 0 50px;
 }
 
-.book-items {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    place-items: center;
-    gap: 15px;
+.books-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
-.book-item {
-    width: 100%;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 4px;
-    box-shadow: 1px 2px 4px 4px rgba(0, 0, 0, .2);
+table,th,td {
+    border: 2px solid #05056d;
+    border-spacing: 7px;
 }
+
+table {
+    /* border: none; */
+    /* padding: 20px; */
+}
+
+th,td {
+    padding: 5px;
+    text-align: center;
+}
+
+tr {
+    cursor: pointer;
+}
+
+tbody tr:nth-child(odd){
+    background-color: #828080;
+}
+
