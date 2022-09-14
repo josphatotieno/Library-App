@@ -4,6 +4,9 @@ const numberOfPages = document.querySelector('#number-of-pages');
 const statusOfReading = document.querySelector('#read');
 const btn = document.querySelector('.btn');
 const bookWrapper = document.querySelector('.books-wrapper');
+const read = document.querySelector('.read');
+console.log(read);
+const errorMsg = document.querySelector('.error-msg')
 const deleteBtn = document.querySelector('.delete');
 
 btn.addEventListener('click', () => {
@@ -12,7 +15,7 @@ btn.addEventListener('click', () => {
         
         clearFields();
     } else {
-        console.log('No book');
+        showErrorMessage();
     }
 })
 
@@ -29,6 +32,16 @@ function addBookLibrary() {
     displayBookToUI();
 }
 
+function Book(read1) {
+    this.read1 = read1;
+}
+
+Book.prototype.readStatus = function() {
+    console.log(this.read1);
+    document.querySelector('.read').classList.toggle('read');
+}
+
+
 function displayBookToUI() {
     console.log(myLibrary);
     myLibrary.forEach((book,index) => {
@@ -39,23 +52,33 @@ function displayBookToUI() {
                     <td>${book.title}</td>
                     <td>${book.pages}</td>
                     <td>${book.author}</td>
-                    <td>${book.read}</td>
+                    <td class="read">${book.read}</td>
                     <td class="delete" data-index=${index}>Delete</td>
                 </tr>
             `
         }
     })
-}
+};
 
 bookWrapper.addEventListener('click', (e) => {
     if(e.target.classList.contains('delete')) {
         myLibrary.splice(e.target.dataset.index,1);
         e.target.parentElement.remove();
+    } else if(e.target.classList.contains('read')) {
+        const bookRead = new Book(read);
+        bookRead.readStatus();
     }
     
-})
+});
 
+function showErrorMessage() {
+    errorMsg.style.display = 'block';
+    setTimeout(clearErrorMessage, 2000);
+}
 
+function clearErrorMessage() {
+    errorMsg.remove();
+}
 
 function clearFields() {
     author.value = '';
