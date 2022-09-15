@@ -1,7 +1,6 @@
 const author = document.querySelector('#author');
 const title = document.querySelector('#title');
 const numberOfPages = document.querySelector('#number-of-pages');
-
 const yes = document.querySelector('#yes');
 const no = document.querySelector('#no');
 const btn = document.querySelector('.btn');
@@ -39,6 +38,11 @@ function Book(readState) {
 
 Book.prototype.readStatus = function() {
     this.readState.classList.toggle('read');
+    if(this.readState.classList.contains('read')) {
+        this.readState.textContent = 'Read';
+    } else {
+        this.readState.textContent = 'Not read';
+    }
 }
 
 
@@ -84,4 +88,3 @@ function clearFields() {
     title.value = '';
     numberOfPages.value = '';
 }
-
