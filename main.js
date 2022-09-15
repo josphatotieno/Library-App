@@ -1,15 +1,18 @@
 const author = document.querySelector('#author');
 const title = document.querySelector('#title');
 const numberOfPages = document.querySelector('#number-of-pages');
-const statusOfReading = document.querySelector('#read');
+
+const yes = document.querySelector('#yes');
+const no = document.querySelector('#no');
 const btn = document.querySelector('.btn');
 const bookWrapper = document.querySelector('.books-wrapper');
 const errorMsg = document.querySelector('.error-msg')
 const deleteBtn = document.querySelector('.delete');
 
 btn.addEventListener('click', () => {
-    if(author.value !== '' && title.value !== '' && numberOfPages.value !== '' && statusOfReading.value !== '') {
-        addBookLibrary();
+    if(author.value !== '' && title.value !== '' && numberOfPages.value !== '' &&  yes.value !== '' && no.value !== '') {
+        const checked = document.querySelector('input[name="choice"]:checked');
+        addBookLibrary(checked);
         
         clearFields();
     } else {
@@ -19,12 +22,12 @@ btn.addEventListener('click', () => {
 
 let myLibrary = [];
 
-function addBookLibrary() {
+function addBookLibrary(checked) {
     myLibrary.push({
         author: author.value,
         title: title.value,
         pages: numberOfPages.value,
-        read: statusOfReading.value
+        read: checked.dataset.readState
     });
 
     displayBookToUI();
@@ -80,6 +83,5 @@ function clearFields() {
     author.value = '';
     title.value = '';
     numberOfPages.value = '';
-    statusOfReading.value = '';
 }
 
