@@ -1,23 +1,36 @@
+const formWrapper = document.querySelector('.form-wrapper')
 const author = document.querySelector('#author');
 const title = document.querySelector('#title');
 const numberOfPages = document.querySelector('#number-of-pages');
 const yes = document.querySelector('#yes');
 const no = document.querySelector('#no');
-const btn = document.querySelector('.btn');
+const addBtn1 = document.querySelector('.add-btn1');
+const addBtn2 = document.querySelector('.add-btn2');
 const bookWrapper = document.querySelector('.books-wrapper');
 const errorMsg = document.querySelector('.error-msg')
 const deleteBtn = document.querySelector('.delete');
 
-btn.addEventListener('click', () => {
+addBtn1.addEventListener('click', () => {
+    formWrapper.style.display = 'block';
+})
+
+addBtn2.addEventListener('click', (e) => {
+    e.preventDefault();
+
     if(author.value !== '' && title.value !== '' && numberOfPages.value !== '' &&  yes.value !== '' && no.value !== '') {
+        formWrapper.style.display = 'none';
         const checked = document.querySelector('input[name="choice"]:checked');
         addBookLibrary(checked);
-        
         clearFields();
+
     } else {
         showErrorMessage();
     }
 });
+
+window.addEventListener('click', (e) => {
+    e.target.classList.contains('form-wrapper') ? formWrapper.style.display = 'none' : false;
+} )
 
 let myLibrary = [];
 
