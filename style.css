@@ -26,7 +26,7 @@ body {
     margin-bottom: 20px;
 }
 
-input {
+input:not(input[type="radio"]) {
     border: none;
     outline: none;
     padding: 10px;
@@ -115,3 +115,19 @@ tbody tr:nth-child(even){
 tbody tr:nth-child(even) .delete {
     background-color: #828080;
 }
+
+.choices-title {
+    margin-bottom: 10px;
+}
+
+.choices-wrapper,
+.choice {
+    display: flex;
+    gap: 15px;
+}
+
+.choice {
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+
