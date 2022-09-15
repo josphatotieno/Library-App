@@ -63,26 +63,32 @@ input {
     justify-content: center;
 }
 
-table,th,td {
-    border: 2px solid #05056d;
-    border-spacing: 7px;
+table {
+    border-radius: 5px;
+    box-shadow: 1px 3px 4px 5px rgba(0, 0, 0, .2);
+    border-collapse: collapse;
+    width: 800px;
 }
 
-table {
-    /* border: none; */
-    /* padding: 20px; */
+thead {
+    text-align: left;
+}
+
+th {
+    color: #fff;
+    background-color: #000;
 }
 
 th,td {
-    padding: 5px;
-    text-align: center;
+    padding: 13px;
+    border-spacing: 7px;
 }
 
 tr {
     cursor: pointer;
 }
 
-tbody tr:nth-child(odd){
+tbody tr:nth-child(even){
     background-color: #828080;
 }
 
@@ -98,6 +104,14 @@ tbody tr:nth-child(odd){
 }
 
 .read {
-    /* color: #f00; */
     opacity: .3;
+}
+
+.delete {
+    color: #f00;
+    background-color: #c5c5c5;
+}
+
+tbody tr:nth-child(even) .delete {
+    background-color: #828080;
 }
