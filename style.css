@@ -103,10 +103,6 @@ tbody tr:nth-child(even){
     display: none;
 }
 
-.read {
-    opacity: .3;
-}
-
 .delete {
     color: #f00;
     background-color: #c5c5c5;
