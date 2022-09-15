@@ -15,7 +15,7 @@ btn.addEventListener('click', () => {
     } else {
         showErrorMessage();
     }
-})
+});
 
 let myLibrary = [];
 
@@ -40,19 +40,17 @@ Book.prototype.readStatus = function() {
 
 
 function displayBookToUI() {
-    console.log(myLibrary);
     myLibrary.forEach((book,index) => {
         if(index === myLibrary.length -1) {
             document.querySelector('tbody').innerHTML += `
                 <tr>
-                    <td>${book.author}</td>
                     <td>${book.title}</td>
-                    <td>${book.pages}</td>
                     <td>${book.author}</td>
-                    <td class="read read1">${book.read}</td>
+                    <td>${book.pages}</td>
+                    <td class="read read-status">${book.read}</td>
                     <td class="delete" data-index=${index}>Delete</td>
                 </tr>
-            `
+                  `
         }
     })
 };
@@ -61,8 +59,8 @@ bookWrapper.addEventListener('click', (e) => {
     if(e.target.classList.contains('delete')) {
         myLibrary.splice(e.target.dataset.index,1);
         e.target.parentElement.remove();
-    } else if(e.target.classList.contains('read1')) {
-        const read = document.querySelector('.read1');
+    } else if(e.target.classList.contains('read-status')) {
+        const read = e.target;
         const bookRead = new Book(read);
         bookRead.readStatus();
     }
