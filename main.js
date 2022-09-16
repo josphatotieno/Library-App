@@ -19,8 +19,11 @@ addBtn2.addEventListener('click', (e) => {
 
     if(author.value !== '' && title.value !== '' && numberOfPages.value !== '' &&  yes.value !== '' && no.value !== '') {
         formWrapper.style.display = 'none';
+
         const checked = document.querySelector('input[name="choice"]:checked');
+
         addBookLibrary(checked);
+
         clearFields();
 
     } else {
@@ -35,6 +38,7 @@ window.addEventListener('click', (e) => {
 let myLibrary = [];
 
 function addBookLibrary(checked) {
+
     myLibrary.push({
         author: author.value,
         title: title.value,
@@ -50,7 +54,9 @@ function Book(readState) {
 }
 
 Book.prototype.readStatus = function() {
+
     this.readState.classList.toggle('read');
+
     if(this.readState.classList.contains('read')) {
         this.readState.textContent = 'Read';
     } else {
@@ -78,10 +84,14 @@ function displayBookToUI() {
 bookWrapper.addEventListener('click', (e) => {
     if(e.target.classList.contains('delete')) {
         myLibrary.splice(e.target.dataset.index,1);
+
         e.target.parentElement.remove();
+
     } else if(e.target.classList.contains('read-status')) {
         const read = e.target;
+
         const bookRead = new Book(read);
+
         bookRead.readStatus();
     }
     
@@ -89,6 +99,7 @@ bookWrapper.addEventListener('click', (e) => {
 
 function showErrorMessage() {
     errorMsg.style.display = 'block';
+    
     setTimeout(clearErrorMessage, 2000);
 }
 
