@@ -99,12 +99,12 @@ bookWrapper.addEventListener('click', (e) => {
 
 function showErrorMessage() {
     errorMsg.style.display = 'block';
-    
+
     setTimeout(clearErrorMessage, 2000);
 }
 
 function clearErrorMessage() {
-    errorMsg.remove();
+    errorMsg.style.display = '';
 }
 
 function clearFields() {
