@@ -11,14 +11,16 @@ const errorMsg = document.querySelector('.error-msg')
 const deleteBtn = document.querySelector('.delete');
 
 addBtn1.addEventListener('click', () => {
-    formWrapper.style.display = 'block';
+    formWrapper.style.opacity = '1';
+    formWrapper.style.visibility = 'visible';
 })
 
 addBtn2.addEventListener('click', (e) => {
     e.preventDefault();
 
     if(author.value !== '' && title.value !== '' && numberOfPages.value !== '' &&  yes.value !== '' && no.value !== '') {
-        formWrapper.style.display = 'none';
+        formWrapper.style.opacity = '0';
+        formWrapper.style.visibility = 'hidden';
 
         const checked = document.querySelector('input[name="choice"]:checked');
 
@@ -32,7 +34,11 @@ addBtn2.addEventListener('click', (e) => {
 });
 
 window.addEventListener('click', (e) => {
-    e.target.classList.contains('form-wrapper') ? formWrapper.style.display = 'none' : false;
+    if(e.target.classList.contains('form-wrapper')) {
+        formWrapper.style.opacity = '0';
+        formWrapper.style.visibility = 'hidden';
+    }
+     
 } )
 
 let myLibrary = [];
