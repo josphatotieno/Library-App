@@ -80,7 +80,7 @@ function displayBookToUI() {
                     <td>${book.author}</td>
                     <td>${book.pages}</td>
                     <td class="read read-status">${book.read}</td>
-                    <td class="delete" data-index=${index}>Delete</td>
+                    <td><button class="btn delete" data-index=${index}>Delete</button></td>
                 </tr>
                   `
         }
@@ -91,7 +91,7 @@ bookWrapper.addEventListener('click', (e) => {
     if(e.target.classList.contains('delete')) {
         myLibrary.splice(e.target.dataset.index,1);
 
-        e.target.parentElement.remove();
+        e.target.parentElement.parentElement.remove();
 
     } else if(e.target.classList.contains('read-status')) {
         const read = e.target;
